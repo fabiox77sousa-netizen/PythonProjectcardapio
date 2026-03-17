@@ -101,7 +101,7 @@ msg += f"\n\n*Total a pagar: R$ {total_final:.2f}*"
 msg_codificada = urllib.parse.quote(msg)
 link_zap = f"https://wa.me/559182766499?text={msg_codificad}"
  
-    st.sidebar.link_button("✅ FINALIZAR NO WHATSAPP", link_zap, use_container_width=True)
+st.sidebar.link_button("✅ FINALIZAR NO WHATSAPP", link_zap, use_container_width=True)
 
 else:
     st.sidebar.warning("Seu carrinho está vazio. Escolha um lanche! 😋")
