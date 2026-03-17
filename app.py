@@ -107,4 +107,3 @@ else:
     st.sidebar.warning("Seu carrinho está vazio. Escolha um lanche! 😋")
 
 st.markdown("<br><hr><center>Top Burger - Santa Izabel-PA</center>", unsafe_allow_html=True)
-)
