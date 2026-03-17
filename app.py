@@ -103,7 +103,7 @@ if total > 0:
     msg_codificada = urllib.parse.quote(msg)
     
     # Link completo com o comando 'text=' no final
-    link_zap = f"https://Wa.me//61986011596{msg_codificada}"
+    link_zap = f"https://wa.me//91982766499{msg_codificada}"
     
     # Botão padrão do Streamlit (com comandos originais em inglês)
     st.sidebar.link_button("✅ FINALIZAR NO WHATSAPP", link_zap, use_container_width=True)
