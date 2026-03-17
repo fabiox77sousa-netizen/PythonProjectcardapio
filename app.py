@@ -98,8 +98,11 @@ if total > 0:
 
     # Botão padrão do Streamlit (não dá erro de sintaxe e não bloqueia)
     st.sidebar.link_button("✅ FINALIZAR NO WHATSAPP", link_zap, use_container_width=True)
+    # 1. Prepara a mensagem (Corrigindo o erro de 'analisar.citar')
+    msg_codificada = urllib.parse.quote(mensagem)
+    
+    # 2. Link completo com o número e o texto (O 'f' no início é essencial!)
+    link_zap = f"https://api.whatsapp.com{msg_codificada}"
 
-else:
-    st.sidebar.warning("Seu carrinho está vazio. Escolha um lanche! 😋")
 
 st.markdown("<br><hr><center>Top Burger - PA</center>", unsafe_allow_html=True)
