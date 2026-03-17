@@ -78,12 +78,29 @@ adicional = st.radio("Escolha um:", ["Nenhum", "Cheddar", "Purê de Batata", "Ce
 # --- RESUMO E WHATSAPP ---
 st.sidebar.title("🛒 Seu Pedido")
 if total > 0:
+    st.sidebar.markdown("---")
+    st.sidebar.subheader("🚚 Dados da Entrega")
+    endereco = st.sidebar.text_area("Endereço completo (Rua, nº, Bairro, Referência):")
+    
+    forma_pagamento = st.sidebar.selectbox(
+        "Forma de pagamento:", 
+        ["Pix", "Cartão de Crédito", "Cartão de Débito", "Dinheiro"]
+    )
+    
+    # --- NOVA LÓGICA DO TROCO ---
+    troco_para = "" # Cria a variável vazia por padrão
+    if forma_pagamento == "Dinheiro":
+        troco_para = st.sidebar.text_input("Troco para quanto? (Deixe em branco se não precisar)")
+    # ----------------------------
+
+    st.sidebar.markdown("---")
+
     for item in carrinho:
         st.sidebar.write(item)
-    
+        
     if adicional != "Nenhum":
         st.sidebar.write(f"Adicional: {adicional}")
-
+        
     st.sidebar.write("**Taxa de Entrega: R$ 4,00**")
     total_final = total + 4.0
     st.sidebar.subheader(f"Total: R$ {total_final:.2f}")
@@ -95,14 +112,25 @@ if total > 0:
     if adicional != "Nenhum":
         msg += f"\nAdicional grátis: {adicional}"
 
+    msg += f"\n\n📍 *Endereço:* {endereco if endereco else 'Não informado'}"
+    msg += f"\n💳 *Pagamento:* {forma_pagamento}"
+    
+    # --- ADICIONA O TROCO NA MENSAGEM SÓ SE FOR DINHEIRO E TIVER PREENCHIDO ---
+    if forma_pagamento == "Dinheiro" and troco_para:
+        msg += f"\n💵 *Troco para:* R$ {troco_para}"
+    
     msg += f"\n\nSubtotal: R$ {total:.2f}"
     msg += f"\nTaxa de entrega: R$ 4.00"
     msg += f"\n*Total a pagar: R$ {total_final:.2f}*"
 
-
     # --- PARTE FINAL CORRIGIDA E ALINHADA ---
     msg_codificada = urllib.parse.quote(msg)
     link_zap = f"https://wa.me/559182766499?text={msg_codificada}"
+
+    st.sidebar.link_button("✅ FINALIZAR NO WHATSAPP", link_zap, use_container_width=True)
+
+else:
+    st.sidebar.warning("Seu carrinho está vazio. Escolha um lanche! 😋")
 
     st.sidebar.link_button("✅ FINALIZAR NO WHATSAPP", link_zap, use_container_width=True)
 
