@@ -94,7 +94,7 @@ if total > 0:
         msg += f"\nAdicional grátis: {adicional}"
       # --- PARTE FINAL CORRIGIDA E ALINHADA ---
     msg_codificada = urllib.parse.quote(msg)
-    link_zap = f"https://wa.me/5561986011596?text={msg_codificada}"
+    link_zap = f"https://wa.me/5591982766499?text={msg_codificada}"
     
     st.sidebar.link_button("✅ FINALIZAR NO WHATSAPP", link_zap, use_container_width=True)
 
