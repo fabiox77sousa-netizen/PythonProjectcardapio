@@ -95,7 +95,7 @@ if total > 0:
     if adicional != "Nenhum":
         msg += f"\nAdicional grátis: {adicional}"
 
-            msg += f"\n\nSubtotal: R$ {total:.2f}"
+        msg += f"\n\nSubtotal: R$ {total:.2f}"
         msg += f"\nTaxa de entrega: R$ 4.00"
         msg += f"\n*Total a pagar: R$ {total_final:.2f}*"
 
