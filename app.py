@@ -103,7 +103,7 @@ if total > 0:
     msg_codificada = urllib.parse.quote(msg)
     
     # Link completo com o comando 'text=' no final
-    link_zap = f"https://api.whatsapp.com{msg_codificada}"
+    link_zap = f"https://Wa.me//61986011596{msg_codificada}"
     
     # Botão padrão do Streamlit (com comandos originais em inglês)
     st.sidebar.link_button("✅ FINALIZAR NO WHATSAPP", link_zap, use_container_width=True)
@@ -111,4 +111,4 @@ if total > 0:
 else:
     st.sidebar.warning("Seu carrinho está vazio. Escolha um lanche! 😋")
 
-st.markdown("<br><hr><center>Top Burger - Belém/PA</center>", unsafe_allow_html=True)
+st.markdown("<br><hr><center>Top Burger - PA</center>", unsafe_allow_html=True)
