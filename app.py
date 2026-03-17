@@ -88,13 +88,19 @@ if total > 0:
     st.sidebar.subheader(f"Total: R$ {total_final:.2f}")
 
     # Montar Mensagem do WhatsApp
-    msg = f"Olá! Gostaria de fazer um pedido:\n\n"
-    msg += "\n".join(carrinho)
-    if adicional != "Nenhum":
-        msg += f"\nAdicional grátis: {adicional}"
-      # --- PARTE FINAL CORRIGIDA E ALINHADA ---
-    msg_codificada = urllib.parse.quote(msg)
-    link_zap = f"https://wa.me/559182766499?text={msg_codificada}"
+msg = f"Olá! Gostaria de fazer um pedido:\n\n"
+msg += "\n".join(carrinho)
+
+if adicional != "Nenhum":
+    msg += f"\nAdicional grátis: {adicional}"
+
+# 👇 valor total👇
+msg += f"\n\n*Total a pagar: R$ {total_final:.2f}*"
+
+# --- PARTE FINAL CORRIGIDA E ALINHADA ---
+msg_codificada = urllib.parse.quote(msg)
+link_zap = f"https://wa.me/559182766499?text={msg_codificada}"
+
     
     st.sidebar.link_button("✅ FINALIZAR NO WHATSAPP", link_zap, use_container_width=True)
 
