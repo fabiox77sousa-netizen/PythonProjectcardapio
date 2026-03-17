@@ -80,30 +80,31 @@ st.sidebar.title("🛒 Seu Pedido")
 if total > 0:
     for item in carrinho:
         st.sidebar.write(item)
+    
     if adicional != "Nenhum":
         st.sidebar.write(f"Adicional: {adicional}")
 
-    st.sidebar.write(f"**Taxa de Entrega: R$ 4,00**")
+    st.sidebar.write("**Taxa de Entrega: R$ 4,00**")
     total_final = total + 4.0
     st.sidebar.subheader(f"Total: R$ {total_final:.2f}")
 
     # Montar Mensagem do WhatsApp
-msg = f"Olá! Gostaria de fazer um pedido:\n\n"
-msg += "\n".join(carrinho)
+    msg = f"Olá! Gostaria de fazer um pedido:\n\n"
+    msg += "\n".join(carrinho)
 
-if adicional != "Nenhum":
-    msg += f"\nAdicional grátis: {adicional}"
+    if adicional != "Nenhum":
+        msg += f"\nAdicional grátis: {adicional}"
 
-# 👇 valor total👇
-msg += f"\n\n*Total a pagar: R$ {total_final:.2f}*"
+    msg += f"\n\n*Total a pagar: R$ {total_final:.2f}*"
 
-# --- PARTE FINAL CORRIGIDA E ALINHADA ---
-msg_codificada = urllib.parse.quote(msg)
-link_zap = f"https://wa.me/559182766499?text={msg_codificad}"
- 
-st.sidebar.link_button("✅ FINALIZAR NO WHATSAPP", link_zap, use_container_width=True)
+    # --- PARTE FINAL CORRIGIDA E ALINHADA ---
+    msg_codificada = urllib.parse.quote(msg)
+    link_zap = f"https://wa.me/559182766499?text={msg_codificada}"
+
+    st.sidebar.link_button("✅ FINALIZAR NO WHATSAPP", link_zap, use_container_width=True)
 
 else:
     st.sidebar.warning("Seu carrinho está vazio. Escolha um lanche! 😋")
 
 st.markdown("<br><hr><center>Top Burger - Santa Izabel-PA</center>", unsafe_allow_html=True)
+)
