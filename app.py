@@ -132,9 +132,5 @@ if total > 0:
 else:
     st.sidebar.warning("Seu carrinho está vazio. Escolha um lanche! 😋")
 
-    st.sidebar.link_button("✅ FINALIZAR NO WHATSAPP", link_zap, use_container_width=True)
-
-else:
-    st.sidebar.warning("Seu carrinho está vazio. Escolha um lanche! 😋")
 
 st.markdown("<br><hr><center>Top Burger - Santa Izabel-PA</center>", unsafe_allow_html=True)
