@@ -17,6 +17,33 @@ st.title("🔥 TOP BURGER")
 st.subheader("Faça seu pedido online!")
 st.write("---")
 
+# --- AVISO PARA O CLIENTE ACHAR O CARRINHO ---
+st.info("👈 **ATENÇÃO:** Para ver seu carrinho e finalizar o pedido, clique na setinha no canto superior esquerdo da tela!")
+
+# --- TRUQUE PARA DEIXAR A SETINHA VERMELHA E PULSANDO ---
+st.markdown(
+    """
+    <style>
+    /* Muda a cor e o fundo da setinha de abrir o menu */
+    [data-testid="collapsedControl"] {
+        color: white !important;
+        background-color: #ff4b4b !important;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(255, 75, 75, 0.5);
+        animation: pulse 1.5s infinite;
+    }
+    
+    /* Cria a animação de pulsar */
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+        100% { transform: scale(1); }
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # --- BANCO DE DADOS DO CARDÁPIO ---
 lanches = {
     "Top Burguer": {"preco": 25.00,
