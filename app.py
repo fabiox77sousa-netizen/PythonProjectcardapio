@@ -92,17 +92,23 @@ if total > 0:
     msg += "\n".join(carrinho)
     if adicional != "Nenhum":
         msg += f"\nAdicional grátis: {adicional}"
-        # --- PARTE FINAL CORRIGIDA E ALINHADA ---
-    msg_codificada = urllib.parse.quote(msg)
-    link_zap = f"https://Wa.me//61986011596{msg_codificada}"
-
-    # Botão padrão do Streamlit (não dá erro de sintaxe e não bloqueia)
-    st.sidebar.link_button("✅ FINALIZAR NO WHATSAPP", link_zap, use_container_width=True)
-    # 1. Prepara a mensagem (Corrigindo o erro de 'analisar.citar')
-    msg_codificada = urllib.parse.quote(mensagem)
+       # --- PARTE FINAL CORRIGIDA (COLE DA LINHA 95 EM DIANTE) ---
+    msg = f"Olá! Gostaria de fazer um pedido:\n\n"
+    msg += "\n".join(carrinho)
+    if adicional != "Nenhum":
+        msg += f"\n\nAdicional grátis: {adicional}"
+    msg += f"\n\nTotal com entrega: R$ {total_final:.2f}"
     
-    # 2. Link completo com o número e o texto (O 'f' no início é essencial!)
+    # Prepara a mensagem para o link (sem espaços que quebram)
+    msg_codificada = urllib.parse.quote(msg)
+    
+    # Link completo com o comando 'text=' no final
     link_zap = f"https://api.whatsapp.com{msg_codificada}"
+    
+    # Botão padrão do Streamlit (com comandos originais em inglês)
+    st.sidebar.link_button("✅ FINALIZAR NO WHATSAPP", link_zap, use_container_width=True)
 
+else:
+    st.sidebar.warning("Seu carrinho está vazio. Escolha um lanche! 😋")
 
-st.markdown("<br><hr><center>Top Burger - PA</center>", unsafe_allow_html=True)
+st.markdown("<br><hr><center>Top Burger - Belém/PA</center>", unsafe_allow_html=True)
